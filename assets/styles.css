@@ -648,6 +648,9 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
 }

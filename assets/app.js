@@ -47,13 +47,65 @@
     });
   }
 
-  // ---------- Contact form success banner ----------
-  const successBanner = document.getElementById('form-success');
+  // ---------- Contact form — fetch submission ----------
   const contactForm = document.getElementById('contact-form');
-  if (successBanner && new URLSearchParams(window.location.search).get('success') === 'true') {
-    successBanner.style.display = 'block';
-    if (contactForm) contactForm.style.display = 'none';
-    successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const successState = document.getElementById('form-success');
+  const errorBanner = document.getElementById('form-error');
+  const errorMsg = document.getElementById('form-error-msg');
+  const submitBtn = document.getElementById('form-submit-btn');
+  const btnLabel = document.getElementById('btn-label');
+  const btnArrow = document.getElementById('btn-arrow');
+  const btnSpinner = document.getElementById('btn-spinner');
+  const resetBtn = document.getElementById('form-reset-btn');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (errorBanner) errorBanner.style.display = 'none';
+
+      // Loading state
+      submitBtn.disabled = true;
+      btnLabel.textContent = 'Sending…';
+      btnArrow.style.display = 'none';
+      btnSpinner.style.display = 'inline-block';
+
+      try {
+        const data = new FormData(contactForm);
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data,
+        });
+        const json = await res.json();
+
+        if (res.ok && json.success) {
+          contactForm.style.display = 'none';
+          if (successState) {
+            successState.style.display = 'block';
+            successState.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        } else {
+          throw new Error(json.message || 'Submission failed');
+        }
+      } catch (err) {
+        if (errorBanner) errorBanner.style.display = 'block';
+        if (errorMsg) errorMsg.textContent = err.message && err.message !== 'Submission failed'
+          ? err.message
+          : 'Please try again or email us directly at info@mitl.university.';
+      } finally {
+        submitBtn.disabled = false;
+        btnLabel.textContent = 'Send message';
+        btnArrow.style.display = '';
+        btnSpinner.style.display = 'none';
+      }
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        contactForm.reset();
+        contactForm.style.display = 'block';
+        if (successState) successState.style.display = 'none';
+      });
+    }
   }
 
   // ---------- Hero slideshow ----------
