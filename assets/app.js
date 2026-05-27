@@ -47,6 +47,15 @@
     });
   }
 
+  // ---------- Contact form success banner ----------
+  const successBanner = document.getElementById('form-success');
+  const contactForm = document.getElementById('contact-form');
+  if (successBanner && new URLSearchParams(window.location.search).get('success') === 'true') {
+    successBanner.style.display = 'block';
+    if (contactForm) contactForm.style.display = 'none';
+    successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
   // ---------- Reveal on scroll ----------
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
