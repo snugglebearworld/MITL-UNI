@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Us — MITL Campus</title>
+<meta name="description" content="Get in touch with MITL Campus admissions. Visit our Boralesgamuwa campus, call, email, or send us a message." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<div id="header-root"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><span>Contact</span></div>
+    <span class="eyebrow" style="margin-top: 24px;">We'd love to hear from you</span>
+    <h1>Get in touch.</h1>
+    <p class="lead">Talk to admissions about programmes and intakes, schedule a campus visit, or send us a message. We respond within one working day.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="apply">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Info side -->
+      <div class="reveal">
+        <div class="contact-info-card">
+          <span class="eyebrow">Visit · Call · Email</span>
+          <h3 style="margin-top: 14px;">Boralesgamuwa Campus.</h3>
+          <p style="color: var(--muted); margin-top: 6px;">Easily accessible from Colombo, Dehiwala and Maharagama — five minutes from the Raththanapitiya junction along Colombo Road.</p>
+
+          <ul class="info-list" style="margin-top: 28px;">
+            <li>
+              <div class="icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="label">Address</div>
+                <div class="value">No. 215/25, Colombo Road,<br/>Raththanapitiya, Boralesgamuwa,<br/>Sri Lanka</div>
+              </div>
+            </li>
+            <li>
+              <div class="icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="label">Phone</div>
+                <div class="value"><a href="tel:+94784866002" style="color: inherit;">+94 78 486 6002</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="label">Email</div>
+                <div class="value">
+                  <a href="mailto:info@mitl.university" style="color: inherit;">info@mitl.university</a><br/>
+                  <a href="mailto:mitlcampus@gmail.com" style="color: inherit; color: var(--muted); font-weight: 400; font-size: 0.92rem;">mitlcampus@gmail.com</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <div class="label">Office Hours</div>
+                <div class="value">Mon – Fri · 8:30 am to 6:00 pm<br/>Sat · 9:00 am to 1:00 pm<br/><span style="color: var(--muted); font-weight: 400; font-size: 0.92rem;">Closed on Sundays &amp; public holidays</span></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="reveal">
+        <span class="eyebrow">Send a message</span>
+        <h2 style="margin-top: 14px;">Application &amp; enquiry form.</h2>
+        <p style="color: var(--muted); margin-top: 14px;">Tell us about yourself and the programme you're interested in. An admissions counsellor will respond within one working day.</p>
+
+        <form style="margin-top: 32px;" onsubmit="event.preventDefault(); this.querySelector('button[type=submit]').textContent='✓ Message sent'; this.reset();">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fname">First name</label>
+              <input id="fname" type="text" required placeholder="Your first name" />
+            </div>
+            <div class="form-field">
+              <label for="lname">Last name</label>
+              <input id="lname" type="text" required placeholder="Your last name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input id="email" type="email" required placeholder="you@example.com" />
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" placeholder="+94 7X XXX XXXX" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="programme">Programme of interest</label>
+            <select id="programme" required>
+              <option value="">Select a programme…</option>
+              <option>Diploma in Business Management</option>
+              <option>Diploma in Information Technology</option>
+              <option>Diploma in Engineering</option>
+              <option>JLPT Japanese — N5</option>
+              <option>JLPT Japanese — N4</option>
+              <option>JLPT Japanese — N3</option>
+              <option>JLPT Japanese — N2</option>
+              <option>JLPT Japanese — N1</option>
+              <option>Other / not sure yet</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="intake">Preferred intake</label>
+            <select id="intake">
+              <option value="">No preference</option>
+              <option>January 2027</option>
+              <option>May 2027</option>
+              <option>September 2027</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="msg">Message</label>
+            <textarea id="msg" placeholder="Tell us a little about your background, qualifications, and any questions you have."></textarea>
+          </div>
+          <button type="submit" class="btn btn-arrow">Send message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          <p style="font-size: 0.78rem; color: var(--muted); margin-top: 14px;">By submitting this form you consent to MITL Campus contacting you about admissions. We will never share your details with third parties.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAP ============ -->
+<section class="bg-ivory">
+  <div class="container">
+    <div class="section-head reveal" style="display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap;">
+      <div>
+        <span class="eyebrow">Find us</span>
+        <h2 style="margin-top: 14px;">Boralesgamuwa, Sri Lanka.</h2>
+        <p class="lead" style="margin-top: 14px;">Five minutes from the Raththanapitiya junction along Colombo Road.</p>
+      </div>
+      <a class="btn btn-ghost btn-arrow" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=No.+215%2F25+Colombo+Road+Raththanapitiya+Boralesgamuwa+Sri+Lanka">Open in Google Maps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+
+    <div class="map-frame reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.34925382068!2d79.8941057!3d6.8467085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae173d65952ab01%3A0x4b07d2b7282a8c75!2sMITL%20CAMPUS!5e0!3m2!1sen!2slk!4v0000000000000"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Map showing MITL Campus, Boralesgamuwa">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUICK FAQ ============ -->
+<section>
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(40px, 6vw, 80px); align-items: start;" class="contact-faq-grid">
+      <div class="reveal">
+        <span class="eyebrow">Quick answers</span>
+        <h2 style="margin-top: 14px;">Before you ask.</h2>
+        <p style="color: var(--muted); margin-top: 18px;">A few of the most common questions we receive. For anything else, the admissions team is one phone call away.</p>
+        <a class="btn btn-ghost" style="margin-top: 14px;" href="tel:+94784866002">Call admissions</a>
+      </div>
+      <div class="reveal">
+        <details class="faq-item" open>
+          <summary>Can I apply online?
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <div class="answer">Yes. Use the form above and an admissions counsellor will be in touch within one working day. You'll receive guidance on documents required and the next steps for your chosen programme.</div>
+        </details>
+        <details class="faq-item">
+          <summary>When are the next intakes?
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <div class="answer">Diploma programmes run three intakes per year (January, May, September). The JLPT language school has monthly N5 / N4 intakes, with twice-yearly N3 / N2 / N1 cohorts aligned to the JLPT examination schedule.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Do you offer scholarships?
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <div class="answer">Yes — merit-based scholarships are available for top GCE A/L performers, and need-based bursaries for qualifying students. Ask your admissions counsellor for eligibility criteria.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I visit campus before enrolling?
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <div class="answer">Absolutely. Walk-in tours are welcome during office hours, and we host a structured Open Day each January and July with curriculum demos, classroom visits and counselling sessions.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-root"></div>
+
+<style>
+  @media (max-width: 1024px) {
+    .contact-faq-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+<script>window.MITL_BASE = '';</script>
+<script src="assets/layout.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

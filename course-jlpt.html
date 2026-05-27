@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JLPT Japanese (N5 → N1) — MITL Campus</title>
+<meta name="description" content="Structured preparation for the Japanese-Language Proficiency Test from N5 through N1, taught at MITL Campus in Boralesgamuwa, Sri Lanka." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css" />
+<style>
+  .ja { font-family: "Noto Serif JP", serif; }
+
+  .jlpt-hero-img {
+    background: radial-gradient(circle at 30% 30%, rgba(184,137,58,0.18), transparent 60%), linear-gradient(135deg, #1B2A4A, #0B2545);
+    aspect-ratio: 4/5;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255,255,255,0.12);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .jlpt-hero-img .kanji {
+    font-family: "Noto Serif JP", serif;
+    color: var(--gold-soft);
+    font-size: clamp(7rem, 16vw, 14rem);
+    line-height: 1;
+    opacity: 0.6;
+  }
+  .jlpt-hero-img::after {
+    content: "日本語能力試験";
+    position: absolute;
+    bottom: 28px; left: 28px;
+    font-family: "Noto Serif JP", serif;
+    color: rgba(253,251,246,0.5);
+    letter-spacing: 0.04em;
+    font-size: 0.95rem;
+  }
+
+  .level-detail {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 40px 44px;
+    background: var(--paper);
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+  .level-detail .badge {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-family: var(--serif);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .level-detail .badge::after {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+  .level-detail .badge .lvl {
+    font-size: 2.6rem;
+    font-style: italic;
+    line-height: 1;
+    font-weight: 500;
+  }
+  .level-detail .badge .label {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-top: 6px;
+  }
+  .level-detail h3 {
+    font-size: 1.7rem;
+    margin-bottom: 4px;
+  }
+  .level-detail .level-meta-row {
+    display: flex; gap: 22px; flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin-bottom: 18px;
+    letter-spacing: 0.04em;
+  }
+  .level-detail .level-meta-row strong { color: var(--ink); font-weight: 600; }
+  .level-detail p { color: var(--slate); margin-bottom: 14px; }
+  .level-detail .skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 18px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+  .level-detail .skill {
+    padding: 0 20px;
+    border-right: 1px solid var(--line);
+  }
+  .level-detail .skill:first-child { padding-left: 0; }
+  .level-detail .skill:last-child { border-right: 0; }
+  .level-detail .skill .label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .level-detail .skill .value {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--ink);
+  }
+
+  @media (max-width: 760px) {
+    .level-detail { grid-template-columns: 1fr; padding: 28px 24px; gap: 22px; }
+    .level-detail .badge { width: 96px; height: 96px; }
+    .level-detail .badge .lvl { font-size: 2.1rem; }
+    .level-detail .skills { grid-template-columns: repeat(2, 1fr); gap: 18px 0; }
+    .level-detail .skill { border-right: 0; padding: 4px 18px; }
+    .level-detail .skill:nth-child(odd) { padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div id="header-root"></div>
+
+<!-- ============ HERO ============ -->
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><a href="courses.html">Courses</a><span class="sep">/</span><span>JLPT Japanese</span></div>
+    <div class="course-hero-grid" style="margin-top: 32px;">
+      <div>
+        <span class="eyebrow">Language School · Japanese</span>
+        <h1 style="margin-top: 18px;"><span class="ja" style="color: var(--gold-soft); font-style: normal;">日本語</span><br/>JLPT N5 to N1.</h1>
+        <p class="lead">Structured preparation for the Japanese-Language Proficiency Test — the official examination administered by the Japan Foundation and recognized by employers, universities and government bodies worldwide. From your first hiragana stroke to professional fluency.</p>
+        <div style="display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap;">
+          <a class="btn btn-gold btn-arrow" href="contact.html#apply">Apply now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a class="btn btn-light-ghost" href="#n5">Browse all levels</a>
+        </div>
+      </div>
+      <div class="jlpt-hero-img">
+        <div class="kanji ja">語</div>
+      </div>
+    </div>
+    <div class="course-quickfacts">
+      <div class="course-quickfact">
+        <div class="label">Levels</div>
+        <div class="value">N5 → N1</div>
+      </div>
+      <div class="course-quickfact">
+        <div class="label">Duration</div>
+        <div class="value">3 – 12 mo</div>
+      </div>
+      <div class="course-quickfact">
+        <div class="label">Mode</div>
+        <div class="value">On-campus</div>
+      </div>
+      <div class="course-quickfact">
+        <div class="label">Intakes</div>
+        <div class="value">Monthly</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT JLPT ============ -->
+<section>
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 80px); align-items: start;" class="about-jlpt-grid">
+      <div class="reveal">
+        <span class="eyebrow">About the JLPT</span>
+        <h2 style="margin-top: 16px;">The world's most recognized test of Japanese.</h2>
+      </div>
+      <div class="reveal">
+        <p style="color: var(--slate); line-height: 1.75;">The Japanese-Language Proficiency Test (<span class="ja">日本語能力試験</span>) is the official measure of Japanese language competence for non-native speakers, jointly administered by the Japan Foundation and Japan Educational Exchanges and Services. There are five levels — N5 is the easiest and N1 the most advanced.</p>
+        <p style="color: var(--muted);">A JLPT certificate at N2 or above is required by most Japanese employers, the Specified Skilled Worker (SSW) visa programme, and Japanese universities. MITL Campus is a designated registration centre for the December and July sittings.</p>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px;" class="jlpt-stats-row">
+          <div style="padding: 18px 0; border-top: 1px solid var(--line);">
+            <div style="font-family: var(--serif); font-size: 1.8rem; color: var(--ink);">2× / year</div>
+            <div style="font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px;">JLPT sittings (Jul · Dec)</div>
+          </div>
+          <div style="padding: 18px 0; border-top: 1px solid var(--line);">
+            <div style="font-family: var(--serif); font-size: 1.8rem; color: var(--ink);">96%</div>
+            <div style="font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px;">First-attempt pass rate*</div>
+          </div>
+          <div style="padding: 18px 0; border-top: 1px solid var(--line);">
+            <div style="font-family: var(--serif); font-size: 1.8rem; color: var(--ink);">14</div>
+            <div style="font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px;">Years teaching Japanese</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEVELS ============ -->
+<section class="bg-ivory">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Programme structure</span>
+      <h2>Five levels. One clear pathway.</h2>
+      <p class="lead">Start where your current ability sits — we'll place you with a short diagnostic — and progress through each level at your own pace. All instruction is delivered through immersive classroom sessions, structured drills, and weekly mock examinations.</p>
+    </div>
+
+    <div id="n5" class="level-detail reveal">
+      <div class="badge"><span class="lvl">N5</span><span class="label">Foundation</span></div>
+      <div>
+        <h3>N5 — Beginner Foundation <span class="ja" style="color: var(--gold-deep); font-size: 1.2rem; margin-left: 8px;">入門</span></h3>
+        <div class="level-meta-row"><span><strong>3 months</strong> · 8 hrs/week</span><span>Intake: <strong>Monthly</strong></span><span>Fee: <strong>LKR 28,000</strong></span></div>
+        <p>The starting point for absolute beginners. You'll master both hiragana and katakana scripts, learn approximately 100 basic kanji, and build a working vocabulary of around 800 words.</p>
+        <p style="color: var(--muted);">By the end of N5 you can introduce yourself, ask and answer simple questions, read children's books and signs, and follow short conversations spoken slowly.</p>
+        <div class="skills">
+          <div class="skill"><div class="label">Vocabulary</div><div class="value">~800</div></div>
+          <div class="skill"><div class="label">Kanji</div><div class="value">~100</div></div>
+          <div class="skill"><div class="label">Study Hours</div><div class="value">~150</div></div>
+          <div class="skill"><div class="label">Class Size</div><div class="value">12 max</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="n4" class="level-detail reveal">
+      <div class="badge"><span class="lvl">N4</span><span class="label">Elementary</span></div>
+      <div>
+        <h3>N4 — Elementary <span class="ja" style="color: var(--gold-deep); font-size: 1.2rem; margin-left: 8px;">初級</span></h3>
+        <div class="level-meta-row"><span><strong>4 months</strong> · 8 hrs/week</span><span>Intake: <strong>Monthly</strong></span><span>Fee: <strong>LKR 32,000</strong></span></div>
+        <p>Builds out grammatical foundation with verb tenses, conjunctions and politeness levels. You'll add approximately 300 kanji and 1,500 vocabulary items.</p>
+        <p style="color: var(--muted);">At N4 you can hold practical conversations on familiar topics, read short passages on everyday subjects, and write structured paragraphs about your life and work.</p>
+        <div class="skills">
+          <div class="skill"><div class="label">Vocabulary</div><div class="value">~1,500</div></div>
+          <div class="skill"><div class="label">Kanji</div><div class="value">~300</div></div>
+          <div class="skill"><div class="label">Study Hours</div><div class="value">~300</div></div>
+          <div class="skill"><div class="label">Class Size</div><div class="value">12 max</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="n3" class="level-detail reveal">
+      <div class="badge"><span class="lvl">N3</span><span class="label">Intermediate</span></div>
+      <div>
+        <h3>N3 — Bridge / Intermediate <span class="ja" style="color: var(--gold-deep); font-size: 1.2rem; margin-left: 8px;">中級</span></h3>
+        <div class="level-meta-row"><span><strong>6 months</strong> · 10 hrs/week</span><span>Intake: <strong>Jan · Jul</strong></span><span>Fee: <strong>LKR 42,000</strong></span></div>
+        <p>The critical "bridge" level between everyday Japanese and the more advanced language used in workplaces and the media. Expect ~650 kanji and a 3,700-word working vocabulary.</p>
+        <p style="color: var(--muted);">N3 graduates can follow newspaper headlines, hold workplace conversations on familiar topics, and write structured business communications such as emails and short reports.</p>
+        <div class="skills">
+          <div class="skill"><div class="label">Vocabulary</div><div class="value">~3,700</div></div>
+          <div class="skill"><div class="label">Kanji</div><div class="value">~650</div></div>
+          <div class="skill"><div class="label">Study Hours</div><div class="value">~450</div></div>
+          <div class="skill"><div class="label">Class Size</div><div class="value">10 max</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="n2" class="level-detail reveal">
+      <div class="badge"><span class="lvl">N2</span><span class="label">Business</span></div>
+      <div>
+        <h3>N2 — Business Ready <span class="ja" style="color: var(--gold-deep); font-size: 1.2rem; margin-left: 8px;">中上級</span></h3>
+        <div class="level-meta-row"><span><strong>9 months</strong> · 12 hrs/week</span><span>Intake: <strong>Jan · Jul</strong></span><span>Fee: <strong>LKR 64,000</strong></span></div>
+        <p>The level required by most Japanese employers, the Specified Skilled Worker (SSW) visa programme, and many Japanese universities. Approximately 1,000 kanji and 6,000 vocabulary items.</p>
+        <p style="color: var(--muted);">N2 graduates can read newspapers and trade journals in their field, follow detailed workplace discussions, and write formal business correspondence. This is the certificate most career paths in Japan require.</p>
+        <div class="skills">
+          <div class="skill"><div class="label">Vocabulary</div><div class="value">~6,000</div></div>
+          <div class="skill"><div class="label">Kanji</div><div class="value">~1,000</div></div>
+          <div class="skill"><div class="label">Study Hours</div><div class="value">~900</div></div>
+          <div class="skill"><div class="label">Class Size</div><div class="value">10 max</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="n1" class="level-detail reveal">
+      <div class="badge" style="background: var(--gold-deep);"><span class="lvl">N1</span><span class="label">Mastery</span></div>
+      <div>
+        <h3>N1 — Professional Mastery <span class="ja" style="color: var(--gold-deep); font-size: 1.2rem; margin-left: 8px;">上級</span></h3>
+        <div class="level-meta-row"><span><strong>12 months</strong> · 14 hrs/week</span><span>Intake: <strong>Jan only</strong></span><span>Fee: <strong>LKR 88,000</strong></span></div>
+        <p>The highest level of the JLPT. Required for medical professionals, engineers and academics working in Japan. You'll command approximately 2,000 kanji and 10,000+ vocabulary, and read at near-native speed.</p>
+        <p style="color: var(--muted);">At N1 you can read complex articles on abstract topics, follow lectures and broadcast news, and produce formal written work suitable for academic and professional contexts. Holders are eligible for skilled professional visas.</p>
+        <div class="skills">
+          <div class="skill"><div class="label">Vocabulary</div><div class="value">~10,000</div></div>
+          <div class="skill"><div class="label">Kanji</div><div class="value">~2,000</div></div>
+          <div class="skill"><div class="label">Study Hours</div><div class="value">~1,800</div></div>
+          <div class="skill"><div class="label">Class Size</div><div class="value">8 max</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY MITL JLPT ============ -->
+<section>
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow center">Why study Japanese at MITL</span>
+      <h2>Trained instructors. Real testing-centre facilities.</h2>
+    </div>
+    <div class="pillars-grid reveal">
+      <div class="pillar">
+        <div class="num">01</div>
+        <h4>Native &amp; near-native instructors</h4>
+        <p>Lessons delivered by certified Japanese-language teachers, several based in Japan part of the year.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">02</div>
+        <h4>Designated JLPT centre</h4>
+        <p>Our hall is officially registered for the December and July sittings — you test where you learn.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">03</div>
+        <h4>Weekly mock exams</h4>
+        <p>Every level runs structured mock JLPT papers under timed conditions, with full breakdown.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">04</div>
+        <h4>Career pathways</h4>
+        <p>Direct introductions to SSW-programme employers, language schools in Japan, and Sri Lankan firms with Japanese partners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAREER OUTCOMES ============ -->
+<section class="bg-ivory">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Career outcomes</span>
+      <h2>Where Japanese opens doors.</h2>
+      <p class="lead">From the Specified Skilled Worker programme to academia, here's what each JLPT level unlocks.</p>
+    </div>
+    <div class="careers-grid">
+      <div class="career-tile">
+        <h4>SSW Visa (Japan)</h4>
+        <p>Specified Skilled Worker programme across 14 industries — minimum N4 / JFT-Basic; N2 preferred.</p>
+      </div>
+      <div class="career-tile">
+        <h4>Caregiving in Japan</h4>
+        <p>Japanese eldercare and nursing roles increasingly demand N3–N2 plus sector training.</p>
+      </div>
+      <div class="career-tile">
+        <h4>Japanese-language Teacher</h4>
+        <p>Teach Japanese at Sri Lankan language schools and institutions — typically N2 or above.</p>
+      </div>
+      <div class="career-tile">
+        <h4>Translator / Interpreter</h4>
+        <p>Document translation and conference interpreting work — N1 with subject specialism.</p>
+      </div>
+      <div class="career-tile">
+        <h4>Tourism &amp; Hospitality</h4>
+        <p>Hotels, tour operators, and resort chains serving Japanese visitors — N3 and above.</p>
+      </div>
+      <div class="career-tile">
+        <h4>IT &amp; BPO (Japan markets)</h4>
+        <p>Support, QA and engineering teams serving Japanese clients — N2 is the typical bar.</p>
+      </div>
+      <div class="career-tile">
+        <h4>University study in Japan</h4>
+        <p>Undergraduate and graduate programmes — N2 (humanities) or N1 (sciences) plus EJU.</p>
+      </div>
+      <div class="career-tile">
+        <h4>Trading &amp; Manufacturing</h4>
+        <p>Sri Lankan firms with Japanese parent companies — coordination and liaison roles.</p>
+      </div>
+      <div class="career-tile">
+        <h4>Embassy &amp; consular work</h4>
+        <p>Local hire roles at Japanese diplomatic and trade missions — N1 strongly preferred.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLY CTA ============ -->
+<section class="cta-strip dark section-narrow">
+  <div class="container">
+    <div class="cta-strip-inner">
+      <div>
+        <span class="eyebrow" style="color: var(--gold-soft);"><span class="ja" style="font-style: normal;">始めましょう</span> · Let's begin</span>
+        <h2 style="margin-top: 14px;">Take the free <em>placement test.</em></h2>
+        <p style="margin: 14px 0 0; max-width: 50ch;">Already studied some Japanese? Take our 20-minute diagnostic to find the right starting level.</p>
+      </div>
+      <div class="cta-ctas">
+        <a class="btn btn-gold btn-arrow" href="contact.html#apply">Book placement <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a class="btn btn-light-ghost" href="contact.html">Talk to instructor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-root"></div>
+
+<style>
+  @media (max-width: 1024px) {
+    .about-jlpt-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 600px) {
+    .jlpt-stats-row { grid-template-columns: 1fr !important; }
+  }
+</style>
+<script>window.MITL_BASE = '';</script>
+<script src="assets/layout.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

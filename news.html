@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>News &amp; Events — MITL Campus</title>
+<meta name="description" content="The latest news, events, convocations and partnerships from MITL Campus, Sri Lanka." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css" />
+<style>
+  /* ── Filters ── */
+  .news-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .news-filters button {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--slate);
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all .2s ease;
+  }
+  .news-filters button:hover { border-color: var(--ink); color: var(--ink); }
+  .news-filters button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  /* ── Hero Slider ── */
+  .hero-slider {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 72px;
+    background: var(--ink-deep);
+  }
+  .slider-track {
+    display: flex;
+    transition: transform .55s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+  }
+  .slide {
+    min-width: 100%;
+    position: relative;
+    user-select: none;
+  }
+  .slide-img {
+    width: 100%;
+    aspect-ratio: 21/9;
+    background-size: cover;
+    background-position: center;
+    display: block;
+  }
+  .slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(6,24,51,0.92) 0%, rgba(6,24,51,0.58) 52%, rgba(6,24,51,0.18) 100%);
+  }
+  .slide-body {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(24px, 5vw, 56px);
+    color: var(--paper);
+  }
+  .slide-cat {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 12px;
+  }
+  .slide-title {
+    font-family: var(--serif);
+    font-size: clamp(1.35rem, 2.8vw, 2.3rem);
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.15;
+    max-width: 22ch;
+    margin-bottom: 12px;
+    text-wrap: balance;
+  }
+  .slide-meta {
+    font-size: 0.82rem;
+    color: rgba(253,251,246,0.55);
+    margin-bottom: 22px;
+    letter-spacing: 0.02em;
+  }
+  .slide-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: var(--ink-deep) !important;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    transition: background .2s;
+    text-decoration: none;
+    width: fit-content;
+  }
+  .slide-cta:hover { background: var(--gold-soft); }
+
+  /* arrows */
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: rgba(253,251,246,0.10);
+    border: 1px solid rgba(253,251,246,0.20);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background .2s, border-color .2s;
+    z-index: 3;
+  }
+  .slider-arrow:hover { background: rgba(253,251,246,0.24); border-color: rgba(253,251,246,0.4); }
+  .slider-arrow.prev { left: 16px; }
+  .slider-arrow.next { right: 16px; }
+  .slider-arrow svg { width: 18px; height: 18px; pointer-events: none; }
+
+  /* dots */
+  .slider-dots {
+    position: absolute;
+    bottom: 18px;
+    right: 22px;
+    display: flex;
+    gap: 8px;
+    z-index: 3;
+  }
+  .slider-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(253,251,246,0.38);
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    transition: width .28s ease, background .28s ease, border-radius .28s ease;
+  }
+  .slider-dot.active {
+    width: 26px;
+    border-radius: 4px;
+    background: var(--gold);
+  }
+
+  /* ── Pagination ── */
+  .news-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 56px;
+    flex-wrap: wrap;
+  }
+  .pg-btn {
+    min-width: 38px; height: 38px;
+    padding: 0 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--slate);
+    font-size: 0.86rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .2s;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--sans);
+  }
+  .pg-btn:hover:not(:disabled):not(.active) { border-color: var(--ink); color: var(--ink); }
+  .pg-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); cursor: default; }
+  .pg-btn:disabled { opacity: 0.30; cursor: default; }
+  .pg-ellipsis { padding: 0 4px; color: var(--muted); font-size: 0.9rem; line-height: 38px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 760px) {
+    .slide-img { aspect-ratio: 4/3; }
+    .newsletter-form { min-width: 100% !important; width: 100%; }
+  }
+  @media (max-width: 480px) {
+    .slide-img { aspect-ratio: 1/1; }
+    .slider-arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="header-root"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><span>News</span></div>
+    <span class="eyebrow" style="margin-top: 24px;">From the Campus</span>
+    <h1>News &amp; Events.</h1>
+    <p class="lead">Convocations, partnerships, examinations, workshops and student achievements — the latest from MITL Campus.</p>
+  </div>
+</section>
+
+<section id="news-section">
+  <div class="container">
+
+    <!-- Dynamic slider -->
+    <div class="hero-slider" id="hero-slider">
+      <div class="slider-track" id="slider-track"></div>
+      <button class="slider-arrow prev" id="slider-prev" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="slider-arrow next" id="slider-next" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+      <div class="slider-dots" id="slider-dots"></div>
+    </div>
+
+    <!-- Filters -->
+    <div class="news-filters">
+      <button class="active" data-filter="all">All news</button>
+      <button data-filter="convocation">Convocations</button>
+      <button data-filter="partnership">Partnerships</button>
+      <button data-filter="examinations">Examinations</button>
+      <button data-filter="workshop">Workshops</button>
+      <button data-filter="campus">Campus Life</button>
+    </div>
+
+    <!-- News grid (rendered by JS) -->
+    <div class="news-grid" id="news-list"></div>
+
+    <!-- Pagination (rendered by JS) -->
+    <div class="news-pagination" id="news-pagination"></div>
+
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="cta-strip section-narrow" style="background: var(--ivory);">
+  <div class="container">
+    <div class="cta-strip-inner">
+      <div>
+        <span class="eyebrow">Stay informed</span>
+        <h2 style="margin-top: 14px;">Get campus news, intakes and events, <em>direct to your inbox.</em></h2>
+      </div>
+      <form style="display: flex; gap: 8px; align-items: stretch; min-width: 360px;" class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ Subscribed';">
+        <input type="email" placeholder="your@email.com" required style="flex: 1; padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); font: inherit;" />
+        <button class="btn">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div id="footer-root"></div>
+
+<script>window.MITL_BASE = '';</script>
+<script src="assets/layout.js"></script>
+<script src="assets/app.js"></script>
+<script>
+// ── Article data ──────────────────────────────────────────────────
+const ARTICLES = [
+  {
+    href: 'news/17th-convocation-bmich.html',
+    cat: 'convocation', catLabel: 'Convocation',
+    date: '14 May 2026',
+    title: '17th Annual Convocation honours 612 graduates at BMICH',
+    excerpt: 'Diplomas were conferred across Business Management, Information Technology, Engineering and the JLPT language school in a joint ceremony with The Universidad Azteca and Universitas BTH.',
+    img: 'assets/news/17th-convocation/08-blue-cohort-audience.jpg', imgPos: 'center 35%',
+    readTime: '8 min', slider: true
+  },
+  {
+    href: 'news/mou-universitas-bth.html',
+    cat: 'partnership', catLabel: 'Partnership',
+    date: '02 April 2026',
+    title: 'MITL signs MoU with Universitas BTH for engineering articulation',
+    excerpt: 'Diploma graduates can now articulate directly into the third year of BTH\'s Bachelor of Engineering programme in Indonesia.',
+    img: 'assets/news/MOU-INDO/N31.jpg', imgPos: 'center 40%',
+    readTime: '3 min', slider: true
+  },
+  {
+    href: 'news/cybersecurity-bootcamp.html',
+    cat: 'workshop', catLabel: 'Workshop',
+    date: '22 Feb 2026',
+    title: 'Three-day cybersecurity bootcamp for IT diploma cohort',
+    excerpt: 'Senior practitioners from SLCERT led practical sessions on penetration testing, incident response and secure coding.',
+    img: 'assets/news/bootcmp/bootcamp.png', imgPos: 'center 40%',
+    readTime: '4 min', slider: true
+  },
+  {
+    href: 'news/central-operations-center.html',
+    cat: 'campus', catLabel: 'Campus',
+    date: '18 Jan 2026',
+    title: 'MITL opens Central Operations Center in Boralesgamuwa',
+    excerpt: 'A new dedicated centre will manage campus operations, student data, online learning platforms and educational affiliations nationwide.',
+    img: 'assets/news/central-operations-center/01-hero-reception.jpg', imgPos: 'center 40%',
+    readTime: '5 min', slider: false
+  },
+  {
+    href: 'news/jlpt-registration-centre.html',
+    cat: 'examinations', catLabel: 'Examinations',
+    date: '07 Dec 2025',
+    title: 'MITL becomes designated JLPT registration centre',
+    excerpt: 'Students sat the December JLPT examination across N5 through N2 in our newly accredited testing hall.',
+    img: 'assets/news/open/hero.jpg', imgPos: 'center 40%',
+    readTime: '3 min', slider: true
+  },
+  {
+    href: 'news/japan-cultural-day.html',
+    cat: 'workshop', catLabel: 'Workshop',
+    date: '05 Oct 2025',
+    title: 'Japan Cultural Day showcases student work across all five JLPT levels',
+    excerpt: 'Calligraphy demonstrations, presentations and a tea ceremony hosted in partnership with the Japan Foundation Sri Lanka.',
+    img: 'assets/news/japan-cultural-day/02-students-happi.jpg', imgPos: 'center 40%',
+    readTime: '3 min', slider: false
+  },
+  {
+    href: 'news/azteca-masters-cohort.html',
+    cat: 'convocation', catLabel: 'Convocation',
+    date: '20 July 2025',
+    title: 'First MITL–Azteca master’s cohort graduates in Mexico',
+    excerpt: 'Twelve MITL alumni completed The Universidad Azteca’s master’s programmes in Business Administration and Information Systems.',
+    img: 'assets/news/17th-convocation/mex2.jpg', imgPos: 'center 40%',
+    readTime: '4 min', slider: false
+  },
+];
+
+// ── Slider ────────────────────────────────────────────────────────
+const SLIDER_ARTICLES = ARTICLES.filter(a => a.slider && a.img);
+const track    = document.getElementById('slider-track');
+const dotsEl   = document.getElementById('slider-dots');
+const sliderEl = document.getElementById('hero-slider');
+
+let slideIdx = 0, slideTimer;
+
+SLIDER_ARTICLES.forEach(function(a, i) {
+  var slide = document.createElement('div');
+  slide.className = 'slide';
+  slide.innerHTML =
+    '<div class="slide-img" style="background-image:url(\'' + a.img + '\');background-position:' + a.imgPos + '"></div>' +
+    '<div class="slide-overlay"></div>' +
+    '<div class="slide-body">' +
+      '<div class="slide-cat">' + a.catLabel + '</div>' +
+      '<div class="slide-title">' + a.title + '</div>' +
+      '<div class="slide-meta">' + a.date + ' &nbsp;&middot;&nbsp; ' + a.readTime + ' read</div>' +
+      '<a href="' + a.href + '" class="slide-cta">Read full story &rarr;</a>' +
+    '</div>';
+  track.appendChild(slide);
+
+  var dot = document.createElement('button');
+  dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+  dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+  dot.addEventListener('click', function() { goSlide(i); resetTimer(); });
+  dotsEl.appendChild(dot);
+});
+
+function goSlide(i) {
+  slideIdx = (i + SLIDER_ARTICLES.length) % SLIDER_ARTICLES.length;
+  track.style.transform = 'translateX(-' + (slideIdx * 100) + '%)';
+  dotsEl.querySelectorAll('.slider-dot').forEach(function(d, j) {
+    d.classList.toggle('active', j === slideIdx);
+  });
+}
+
+function resetTimer() {
+  clearInterval(slideTimer);
+  slideTimer = setInterval(function() { goSlide(slideIdx + 1); }, 5000);
+}
+
+document.getElementById('slider-prev').addEventListener('click', function() { goSlide(slideIdx - 1); resetTimer(); });
+document.getElementById('slider-next').addEventListener('click', function() { goSlide(slideIdx + 1); resetTimer(); });
+sliderEl.addEventListener('mouseenter', function() { clearInterval(slideTimer); });
+sliderEl.addEventListener('mouseleave', resetTimer);
+
+resetTimer();
+
+// ── Grid + Pagination ─────────────────────────────────────────────
+var PER_PAGE    = 3;
+var activeFilter = 'all';
+var currentPage  = 1;
+
+function getFiltered() {
+  return ARTICLES.filter(function(a) {
+    return activeFilter === 'all' || a.cat === activeFilter;
+  });
+}
+
+function cardHTML(a) {
+  var thumbClass = 'news-thumb' + (a.img ? ' has-img' : '');
+  var thumbStyle = a.img
+    ? 'background-image:url(\'' + a.img + '\');background-position:' + a.imgPos
+    : '';
+  return '<a href="' + a.href + '" class="news-card">' +
+    '<div class="' + thumbClass + '" data-label="" style="' + thumbStyle + '"></div>' +
+    '<div class="news-card-body">' +
+      '<div class="news-meta"><span>' + a.catLabel + '</span><span class="dot"></span><span>' + a.date + '</span></div>' +
+      '<h3>' + a.title + '</h3>' +
+      '<p class="excerpt">' + a.excerpt + '</p>' +
+      '<span class="more">Read story</span>' +
+    '</div>' +
+  '</a>';
+}
+
+function renderPagination(page, total) {
+  var el = document.getElementById('news-pagination');
+  if (total <= 1) { el.innerHTML = ''; return; }
+
+  var html = '<button class="pg-btn" ' + (page === 1 ? 'disabled' : 'data-page="' + (page - 1) + '"') + '>← Prev</button>';
+
+  for (var i = 1; i <= total; i++) {
+    if (i === 1 || i === total || Math.abs(i - page) <= 1) {
+      html += '<button class="pg-btn' + (i === page ? ' active' : '') + '" data-page="' + i + '">' + i + '</button>';
+    } else if (i === page - 2 || i === page + 2) {
+      html += '<span class="pg-ellipsis">&hellip;</span>';
+    }
+  }
+
+  html += '<button class="pg-btn" ' + (page === total ? 'disabled' : 'data-page="' + (page + 1) + '"') + '>Next →</button>';
+  el.innerHTML = html;
+
+  el.querySelectorAll('.pg-btn[data-page]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      currentPage = parseInt(btn.dataset.page);
+      render();
+      document.getElementById('news-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}
+
+function render() {
+  var filtered   = getFiltered();
+  var total      = Math.ceil(filtered.length / PER_PAGE);
+  var pageItems  = filtered.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
+  var grid       = document.getElementById('news-list');
+
+  grid.innerHTML = pageItems.length
+    ? pageItems.map(cardHTML).join('')
+    : '<p style="color:var(--muted);grid-column:1/-1;padding:56px 0;text-align:center;font-size:1rem;">No articles in this category yet.</p>';
+
+  renderPagination(currentPage, total);
+}
+
+// Filter buttons
+document.querySelectorAll('.news-filters button').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.news-filters button').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    currentPage  = 1;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>
