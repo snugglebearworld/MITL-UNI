@@ -56,6 +56,17 @@
     successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
+  // ---------- Hero slideshow ----------
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  if (heroSlides.length > 1) {
+    let heroIdx = 0;
+    setInterval(() => {
+      heroSlides[heroIdx].classList.remove('active');
+      heroIdx = (heroIdx + 1) % heroSlides.length;
+      heroSlides[heroIdx].classList.add('active');
+    }, 4000);
+  }
+
   // ---------- Reveal on scroll ----------
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
