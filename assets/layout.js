@@ -85,6 +85,7 @@
               '<li><a href="' + b + 'course-business.html">Diploma in Business</a></li>' +
               '<li><a href="' + b + 'course-it.html">Diploma in IT</a></li>' +
               '<li><a href="' + b + 'course-engineering.html">Diploma in Engineering</a></li>' +
+              '<li><a href="' + b + 'course-english.html">Diploma in English</a></li>' +
               '<li><a href="' + b + 'course-jlpt.html">JLPT Japanese</a></li>' +
             '</ul>' +
           '</div>' +
